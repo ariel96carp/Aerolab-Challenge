@@ -1,13 +1,99 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .page-container{
+        @apply w-[90%] sm:w-full container mx-auto;
+    }
+
+    .section-container{
+        @apply md:w-[90%] mx-auto;
+    }
+
+    .btn-primary{
+        @apply bg-gray-200 py-2 px-3 rounded-full md:text-sm text-gray-600;
+    }
+
+    .btn-primary.effect{
+        @apply hover:bg-sky-400 hover:text-white;
+    }
+
+    .card-effect{
+        @apply 
+            opacity-0 
+            pointer-events-none 
+            group-hover:opacity-100 
+            group-hover:pointer-events-auto 
+            transition-opacity;
+    }
+
+    .points-button{
+        @apply w-full bg-gray-200 rounded-xl py-2;
+    }
+
+    .add-button{
+        @apply flex items-center justify-center gap-2 w-full mt-6 bg-gradient-to-r from-cyan-500 to-blue-500 py-3 rounded-2xl text-white;
+    }
+
+    .bg-card{
+        @apply bg-[url('./assets/img/bg-tarjeta-02.jpg')] bg-no-repeat bg-cover bg-center;
+    }
+
+    .user-points{
+        @apply absolute top-[120%] right-0 bg-white rounded-xl border w-[20rem] py-4 px-6 font-semibold pointer-events-none opacity-0 transition-opacity;
+    }
+
+    .user-points.open{
+        @apply opacity-100 pointer-events-auto;
+    }
+
+    .points-button.selected{
+        @apply bg-gradient-to-r from-cyan-500 to-blue-500 text-white;
+    }
+
+    .points-button.selected span{
+        @apply text-white;
+    }
+
+    .filter-option.selected{
+        @apply bg-sky-400 text-white;
+    }
+
+    .bg-text{
+        @apply bg-gradient-to-r from-cyan-500 to-blue-500 text-transparent bg-clip-text;
+    }
+
+    .bg-login{
+        @apply bg-[url('./assets/img/abstract-blue-wave-decoration-png-background-1.png')]
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root{
+    --header-size: 4rem;
+}
+
+body #root{
+    display: grid;
+    grid-template-rows: auto min-content;
+    min-height: calc(100vh - var(--header-size));
+    margin-top: var(--header-size);
+}
+
+html{
+    font-size: 0.8125rem;
+}
+
+@media screen and (min-width: 20rem){
+    html{
+        font-size: calc(0.8125rem + 0.1875 * ((100vw - 20rem) / 61.25));
+    }
+}
+
+@media screen and (min-width: 81.25rem){
+    html{
+        font-size: 1rem;
+    }
 }
