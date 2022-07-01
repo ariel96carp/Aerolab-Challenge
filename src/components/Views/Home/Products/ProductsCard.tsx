@@ -5,6 +5,7 @@ import buyBlueImage from '../../../../assets/img/buy-blue.svg'
 import coinImage from '../../../../assets/img/coin.svg'
 import aerolabImage from '../../../../assets/img/aeropay-3.svg'
 import AlertModal from '../../../common/AlertModal'
+import Loader from '../../../common/Loader'
 
 type CardProps = {
     isAvailable?: boolean,
@@ -22,24 +23,31 @@ const ProductsCard: FC<CardProps> = ({
     image,
     id
 }) => {
-    const [ reedemedProduct, setReedemedProduct ] = useState<boolean>(false)
-    const [ reedemError, setReedemError ] = useState<boolean>(false)
+    const [ redeemingProduct, setRedeemingProduct ] = useState<boolean>(false)
+    const [ redeemedProduct, setRedeemedProduct ] = useState<boolean>(false)
+    const [ redeemError, setRedeemError ] = useState<boolean>(false)
     const userPoints = useAppSelector((state) => state.user.user?.points)
     const dispatch = useAppDispatch()
     const saveProduct = (): void => {
+        setRedeemingProduct(true)
         dispatch(reedemProduct(id))
             .then(() => {
-                setReedemedProduct(true)
+                setRedeemingProduct(false)
+                setRedeemedProduct(true)
                 dispatch(removePoints(cost))
             })
-            .catch(() => setReedemError(true))
+            .catch(() => {
+                setRedeemingProduct(false)
+                setRedeemError(true)
+            })
     }
     return (
         <article>
-            { reedemedProduct && <AlertModal closeModal={() => setReedemedProduct(false)} /> }
+            { redeemingProduct && <Loader /> }
+            { redeemedProduct && <AlertModal closeModal={() => setRedeemedProduct(false)} /> }
             {
-                reedemError
-                    && <AlertModal isChecked={false} closeModal={() => setReedemError(false)} />
+                redeemError
+                    && <AlertModal isChecked={false} closeModal={() => setRedeemError(false)} />
             }
             <div
                 className={`
@@ -89,7 +97,7 @@ const ProductsCard: FC<CardProps> = ({
                                     className="btn-primary w-full"
                                     onClick={() => saveProduct()}
                                 >
-                                    Reedem now
+                                    Redeem now
                                 </button>
                             </div>
                         )
@@ -104,7 +112,7 @@ const ProductsCard: FC<CardProps> = ({
                             onClick={() => saveProduct()}
                         >
                             <div className="inline-flex items-center gap-2 m-auto font-semibold text-white">
-                                Reedem for
+                                Redeem for
                                 <img src={aerolabImage} alt="Aerolab" />
                                 {cost}
                             </div>

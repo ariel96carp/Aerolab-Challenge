@@ -71,6 +71,10 @@
     .bg-login{
         @apply bg-[url('./assets/img/abstract-blue-wave-decoration-png-background-1.png')]
     }
+
+    .loader-circle{
+        @apply w-4 h-4 rounded-full bg-gray-100;
+    }
 }
 
 :root{
@@ -98,4 +102,23 @@ html{
     html{
         font-size: 1rem;
     }
+}
+
+@keyframes loader-animation {
+    to {
+        opacity: .1;
+        transform: translate3d(0, 1rem, 0);
+    }
+}
+
+.loader-circle{
+    animation: loader-animation .6s infinite alternate;
+}
+
+.loader-circle:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.loader-circle:nth-child(3) {
+    animation-delay: .4s;
 }

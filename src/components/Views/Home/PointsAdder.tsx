@@ -9,11 +9,13 @@ import { useAppSelector, useAppDispatch } from '../../hooks/TypedStoreHooks'
 import { addPoints } from '../../redux/user'
 import aerolabImage from '../../../assets/img/aeropay-2.svg'
 import AlertModal from '../../common/AlertModal'
+import Loader from '../../common/Loader'
 
 type RefProp = HTMLDivElement
 const PointsAdder = forwardRef<RefProp>((props, ref) => {
     const buttonsListRef = useRef<HTMLUListElement>(null)
     const dispatch = useAppDispatch()
+    const [ loadingPoints, setLoadingPoints ] = useState<boolean>(false)
     const [ pointsAdded, setPointsAdded ] = useState<boolean>(false)
     const [ pointsError, setPointsError ] = useState<boolean>(false)
     const [ closePoints, setClosePoints ] = useState<boolean>(false)
@@ -36,12 +38,15 @@ const PointsAdder = forwardRef<RefProp>((props, ref) => {
             for (let i = 0; i < buttons.length; i++) {
                 if (buttons[i].classList.contains('selected')) {
                     const pointsToAdd = parseInt(buttons[i].textContent as string, 10)
+                    setLoadingPoints(true)
                     dispatch(addPoints(pointsToAdd))
                         .then(() => {
+                            setLoadingPoints(false)
                             setPointsAdded(true)
                             buttons[i].classList.remove('selected')
                         })
                         .catch(() => {
+                            setLoadingPoints(false)
                             setPointsError(true)
                             buttons[i].classList.remove('selected')
                         })
@@ -88,6 +93,7 @@ const PointsAdder = forwardRef<RefProp>((props, ref) => {
     const user = useAppSelector((state) => state.user.user)
     return (
         <div ref={ref} className="user-points shadow-md">
+            { loadingPoints && <Loader /> }
             {
                 pointsAdded
                     && (
