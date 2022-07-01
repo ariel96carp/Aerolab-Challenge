@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { useAppSelector } from '../../../hooks/TypedStoreHooks'
 import ProductsCard from './ProductsCard'
 
@@ -28,9 +28,9 @@ const ProductsList = (): JSX.Element => {
             productsRendered = products.slice(productsIndexStart, productsIndexEnd)
             break
     }
-    useEffect(() => {
-        console.log(productsIndexStart, productsIndexEnd)
-    }, [ productsIndexStart, productsIndexEnd ])
+    // useEffect(() => {
+    //     console.log(productsIndexStart, productsIndexEnd)
+    // }, [ productsIndexStart, productsIndexEnd ])
     return (
         <main
             className="pt-4 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5"
