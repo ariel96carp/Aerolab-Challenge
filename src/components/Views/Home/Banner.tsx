@@ -1,5 +1,5 @@
 const Banner = (): JSX.Element => (
-    <div className="h-[20rem] pt-4 bg-[url('./assets/img/headerx1.png')] md:bg-none bg-no-repeat bg-cover bg-[center_right]">
+    <div className="h-[20rem] md:pt-4 bg-[url('./assets/img/headerx1.png')] md:bg-none bg-no-repeat bg-cover bg-[center_right]">
         <div
             className="
                 page-container

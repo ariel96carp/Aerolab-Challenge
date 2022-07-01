@@ -17,8 +17,10 @@
         @apply bg-gray-200 py-2 px-3 rounded-full md:text-sm text-gray-600;
     }
 
-    .btn-primary.effect{
-        @apply hover:bg-sky-400 hover:text-white;
+    @media (pointer: fine) {
+        .btn-primary.effect{
+            @apply hover:bg-sky-400 hover:text-white;
+        }
     }
 
     .card-effect{
