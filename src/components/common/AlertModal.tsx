@@ -58,7 +58,10 @@ const AlertModal: FC<TModalProps> = ({
                 }
                 <button
                     type="button"
-                    onClick={closeModal}
+                    onClick={() => {
+                        closeModal()
+                        if (closePoints) closePoints()
+                    }}
                     className="btn-primary bg-sky-400 font-semibold text-white mt-auto"
                 >
                     Close Modal
