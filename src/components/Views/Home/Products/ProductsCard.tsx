@@ -4,6 +4,7 @@ import { reedemProduct, removePoints } from '../../../redux/user'
 import buyBlueImage from '../../../../assets/img/buy-blue.svg'
 import coinImage from '../../../../assets/img/coin.svg'
 import aerolabImage from '../../../../assets/img/aeropay-3.svg'
+import defaultImage from '../../../../assets/img/default-product-image.png'
 import AlertModal from '../../../common/AlertModal'
 import Loader from '../../../common/Loader'
 
@@ -12,7 +13,7 @@ type CardProps = {
     product: string,
     category: string,
     cost: number,
-    image: string,
+    image?: string,
     id: string
 }
 const ProductsCard: FC<CardProps> = ({
@@ -20,7 +21,7 @@ const ProductsCard: FC<CardProps> = ({
     product,
     category,
     cost,
-    image,
+    image = defaultImage,
     id
 }) => {
     const [ redeemingProduct, setRedeemingProduct ] = useState<boolean>(false)
@@ -51,7 +52,8 @@ const ProductsCard: FC<CardProps> = ({
             }
             <div
                 className={`
-                    h-[23rem]
+                    h-[28rem]
+                    sm:h-[25rem]
                     shadow-md
                     text-sm
                     font-semibold
