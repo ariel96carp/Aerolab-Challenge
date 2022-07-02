@@ -1,12 +1,12 @@
 import { FC, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/TypedStoreHooks'
 import { reedemProduct, removePoints } from '../../../redux/user'
+import AlertModal from '../../../common/AlertModal'
+import Loader from '../../../common/Loader'
 import buyBlueImage from '../../../../assets/img/buy-blue.svg'
 import coinImage from '../../../../assets/img/coin.svg'
 import aerolabImage from '../../../../assets/img/aeropay-3.svg'
 import defaultImage from '../../../../assets/img/default-product-image.png'
-import AlertModal from '../../../common/AlertModal'
-import Loader from '../../../common/Loader'
 
 type CardProps = {
     isAvailable?: boolean,
