@@ -6,14 +6,13 @@ import Loader from '../../../common/Loader'
 import buyBlueImage from '../../../../assets/img/buy-blue.svg'
 import coinImage from '../../../../assets/img/coin.svg'
 import aerolabImage from '../../../../assets/img/aeropay-3.svg'
-import defaultImage from '../../../../assets/img/default-product-image.png'
 
 type CardProps = {
     isAvailable?: boolean,
     product: string,
     category: string,
     cost: number,
-    image?: string,
+    image: string,
     id: string
 }
 const ProductsCard: FC<CardProps> = ({
@@ -21,7 +20,7 @@ const ProductsCard: FC<CardProps> = ({
     product,
     category,
     cost,
-    image = defaultImage,
+    image,
     id
 }) => {
     const [ redeemingProduct, setRedeemingProduct ] = useState<boolean>(false)
@@ -70,7 +69,7 @@ const ProductsCard: FC<CardProps> = ({
                     <img src={image} alt="Producto" className="w-full h-full object-cover object-center" />
                     <div className="absolute bottom-0 left-1/2 h-[1px] w-[calc(100%-(1.5rem*2))] bg-gray-300 translate-x-[-50%]" />
                 </div>
-                <div className="mt-auto px-6 pb-4">
+                <div className="mt-auto px-6 pb-6">
                     <h3 className="text-gray-400">{category}</h3>
                     <p className="text-gray-700">{product}</p>
                 </div>
