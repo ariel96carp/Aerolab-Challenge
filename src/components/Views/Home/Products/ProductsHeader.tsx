@@ -24,7 +24,7 @@ const ProductsHeader = (): JSX.Element => {
                             {`Page ${pageRendered} of ${pagesToRender}`}
                         </p>
                     </div>
-                    <p className="text-gray-600">Sort by:</p>
+                    <p className="text-gray-600 hidden md:block">Sort by:</p>
                     <button
                         type="button"
                         className={`filter-option btn-primary effect ${filterSelected === 'recent' ? 'selected' : ''}`}
@@ -52,7 +52,6 @@ const ProductsHeader = (): JSX.Element => {
                         ? (
                             <button
                                 type="button"
-                                className="hidden md:block"
                                 onClick={() => dispatch(changePage(2))}
                             >
                                 <img src={arrowRight} alt="Flecha" className="w-[2.5em]" />
@@ -61,7 +60,6 @@ const ProductsHeader = (): JSX.Element => {
                         : (
                             <button
                                 type="button"
-                                className="hidden md:block"
                                 onClick={() => dispatch(changePage(1))}
                             >
                                 <img src={arrowLeft} alt="Flecha" className="w-[2.5em]" />
