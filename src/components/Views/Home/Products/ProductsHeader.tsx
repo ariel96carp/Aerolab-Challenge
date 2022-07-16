@@ -24,7 +24,7 @@ const ProductsHeader = (): JSX.Element => {
                             {`Page ${pageRendered} of ${pagesToRender}`}
                         </p>
                     </div>
-                    <p className="text-gray-600 hidden md:block">Sort by:</p>
+                    <p className="text-gray-600">Sort by:</p>
                     <button
                         type="button"
                         className={`filter-option btn-primary effect ${filterSelected === 'recent' ? 'selected' : ''}`}
